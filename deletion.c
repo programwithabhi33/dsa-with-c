@@ -22,7 +22,7 @@ int main() {
    printf("\n");
 
    printf("After Deletion: ");
-   deletion(arr, 4, 2);
+   deletion(arr, arrSize, 2);
    arrSize -= 1;
    display(arr, arrSize);
 
