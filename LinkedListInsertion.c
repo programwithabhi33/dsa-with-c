@@ -32,14 +32,17 @@ void insertAtEndOfLinkedList(struct Node *head, int data) {
   ptr->next = NULL;
 }
 
-void insertAtIndexOfLinkedList(struct Node *head, int data, int index) {
+void insertInBetweenOfLinkedList(struct Node *head, int data, int index) {
   struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
   ptr->data = data;
   struct Node *p = head;
+  int i = 0;
 
-  while (p->next != NULL) {
+  while (i != index - 1) {
     p = p->next;
+    i++;
   }
+  ptr->next = p->next;
   p->next = ptr;
 }
 
@@ -72,6 +75,8 @@ void main() {
 
   printf("\nLinkedList After Insertion\n");
   // head = insertAtBeginningOfLinkedList(head, 6);
-  insertAtEndOfLinkedList(head, 10);
+  // insertAtEndOfLinkedList(head, 10);
+  // insertInBetweenOfLinkedList(head, 10, 2);
+  insertAfterNodeInLinkedList(second, 11);
   DisplayLinkedList(head);
 }
