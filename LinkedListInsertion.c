@@ -41,7 +41,14 @@ void insertAtIndexOfLinkedList(struct Node *head, int data, int index) {
     p = p->next;
   }
   p->next = ptr;
-  ptr->next = NULL;
+}
+
+void insertAfterNodeInLinkedList(struct Node *node, int data) {
+  struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+  ptr->data = data;
+
+  ptr->next = node->next;
+  node->next = ptr;
 }
 
 void main() {
