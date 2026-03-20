@@ -16,12 +16,49 @@ void DisplayLinkedList(struct Node *ptr) {
 }
 
 // Case first: Delete the first node from linked list
-struct Node *deleteFirstNodeFromLinkedList(struct Node *head) {
-  struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
-  ptr = head->next;
-  free(head);
-  head = NULL;
-  return ptr;
+void deleteFirstNodeFromLinkedList(struct Node **head) {
+  struct Node *ptr = *head;
+  *head = (*head)->next;
+  free(ptr);
+  ptr = NULL;
+}
+
+// Case second: Delete the node from linked list at index
+void deleteNodeFromLinkedListAtIndex(struct Node *head, int index) {
+  struct Node *ptr = head;
+  struct Node *iterationPtr;
+  int i = 0;
+  while (i != (index - 1)) {
+    ptr = ptr->next;
+    i++;
+  }
+  iterationPtr = ptr->next;
+  ptr->next = iterationPtr->next;
+  free(iterationPtr);
+  iterationPtr = NULL;
+}
+
+// Case third: Delete the last node from linked
+void deleteTheLastNodeFromLinkedList(struct Node *ptr) {
+  while (ptr->next->next != NULL) {
+    ptr = ptr->next;
+  }
+  free(ptr->next);
+  ptr->next = NULL;
+}
+
+// Case fourth: Delete the first node from linked with given value
+void deleteFirstNodeFromLinkedWithGivenValue(struct Node *head, int value) {
+  struct Node *ptr = head;
+  struct Node *deleteValuePtr;
+  while (ptr->next->data != value && ptr->next->next != NULL) {
+    ptr = ptr->next;
+  }
+  if (ptr->next->next != NULL) {
+    deleteValuePtr = ptr->next;
+    ptr->next = ptr->next->next;
+    free(deleteValuePtr);
+  }
 }
 
 void main() {
@@ -44,6 +81,9 @@ void main() {
   DisplayLinkedList(head);
 
   printf("LinkedList After Deletion\n");
-  head = deleteFirstNodeFromLinkedList(head);
+  // deleteFirstNodeFromLinkedList(&head);
+  // deleteNodeFromLinkedListAtIndex(head, 2);
+  // deleteTheLastNodeFromLinkedList(head);
+  deleteFirstNodeFromLinkedWithGivenValue(head, 2);
   DisplayLinkedList(head);
 }
