@@ -10,23 +10,22 @@ struct Node {
 
 // Dispaly doubly linked list elements in forward and reverse both orders
 void traversal(struct Node *head) {
+  struct Node *last;
+
   // display forward elements from doubly linked list
   printf("Forward element printing\n");
-  do {
+  while (head != NULL) {
     printf("Element is: %d\n", head->data);
+    last = head;
     head = head->next;
-  } while (head->next != NULL);
-  // To display the last element
-  printf("Element is: %d\n", head->data);
+  };
 
   printf("Backward element printing\n");
   // display reverse elements from doubly linked list
-  do {
-    printf("Element is: %d\n", head->data);
-    head = head->prev;
-  } while (head->prev != NULL);
-  // To display the last element from reverse (first element)
-  printf("Element is: %d\n", head->data);
+  while (last != NULL) {
+    printf("Element is: %d\n", last->data);
+    last = last->prev;
+  };
 }
 
 void main() {
