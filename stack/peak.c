@@ -33,14 +33,20 @@ char *pushIntoStack(struct Stack *ptr, int value) {
   return "Push operation in stack is successfull\n";
 }
 
+// Peak to a position of stack from top to bottom, starting from number 1 to
+// bottom elements
+int peak(struct Stack *ptr, int position) {
+  if (ptr->top - position + 1 < 0) {
+    return 0;
+  }
+  return ptr->arr[ptr->top - position + 1];
+}
+
 int main() {
   struct Stack *s = malloc(sizeof(struct Stack));
-  s->size = 3;
+  s->size = 7;
   s->top = -1;
   s->arr = (int *)malloc(s->size * sizeof(int));
-
-  s->arr[0] = 7;
-  s->top++;
 
   printf("%s", pushIntoStack(s, 8));
   printf("%s", pushIntoStack(s, 9));
@@ -48,6 +54,9 @@ int main() {
 
   printf("Stack after push operations\n");
   displayStackArrayElements(s);
+
+  printf("The element in position %d in stack is %d\n", 3, peak(s, 3));
+  printf("The element in position %d in stack is %d\n", 1, peak(s, 1));
 
   return 0;
 }

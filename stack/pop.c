@@ -21,12 +21,6 @@ int checkIsStackEmpty(struct Stack *ptr) {
   }
   return 0;
 }
-int checkIsStackFull(struct Stack *ptr) {
-  if (ptr->top == (ptr->size - 1)) {
-    return 1;
-  }
-  return 0;
-}
 
 // Pop method
 char *popInStack(struct Stack *ptr) {
