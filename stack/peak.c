@@ -42,6 +42,12 @@ int peak(struct Stack *ptr, int position) {
   return ptr->arr[ptr->top - position + 1];
 }
 
+// Stacktop method
+int stackTop(struct Stack *ptr) { return ptr->arr[ptr->top]; }
+
+// Stackbottom method
+int stackBottom(struct Stack *ptr) { return ptr->arr[0]; }
+
 int main() {
   struct Stack *s = malloc(sizeof(struct Stack));
   s->size = 7;
@@ -57,6 +63,9 @@ int main() {
 
   printf("The element in position %d in stack is %d\n", 3, peak(s, 3));
   printf("The element in position %d in stack is %d\n", 1, peak(s, 1));
+
+  printf("Stack top element is %d\n", stackTop(s));
+  printf("Stack bottom element is %d\n", stackBottom(s));
 
   return 0;
 }
